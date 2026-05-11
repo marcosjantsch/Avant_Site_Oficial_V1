@@ -1,0 +1,53 @@
+{
+  "company": "Avant",
+  "links": [
+    {
+      "system": "combate-incendio-florestal",
+      "title": "Combate a Incêndio Florestal",
+      "url": "https://marcosjantsch.github.io/IncendioPlataformaAvant/",
+      "image": "../site/imagens/plataforma-combate-incendio.webp",
+      "alt": "Figura de combate a incêndio florestal na plataforma da Avant",
+      "description": "Painel de monitoramento e resposta para ocorrências de incêndio florestal."
+    },
+    {
+      "system": "analise-climatica",
+      "title": "Análise Climática",
+      "url": "https://avantclimav23-675455728201.southamerica-east1.run.app",
+      "image": "../site/imagens/plataforma-clima.webp",
+      "alt": "Figura de análise climática da Avant",
+      "description": "Série histórica, indicadores climáticos e acompanhamento técnico para a operação."
+    },
+    {
+      "system": "analise-imagens-satelite",
+      "title": "Análise de Imagens de Satélite",
+      "url": "https://avantmap-675455728201.southamerica-east1.run.app",
+      "image": "../site/imagens/plataforma-satelite.webp",
+      "alt": "Figura de análise de imagens de satélite",
+      "description": "Consulta de camadas geoespaciais, ortomosaicos e leitura operacional por imagem."
+    },
+    {
+      "system": "dados-fundiarios",
+      "title": "Dados Fundiários",
+      "url": "https://avantfundiario-675455728201.southamerica-east1.run.app/",
+      "image": "../site/imagens/plataforma-fundiario.webp",
+      "alt": "Figura de dados fundiários da Avant",
+      "description": "Acompanhamento documental, leitura territorial e organização fundiária."
+    },
+    {
+      "system": "cotas-inundacao-rio-negrinho",
+      "title": "Cotas de Inundação - Rio Negrinho",
+      "url": "https://marcosjantsch.github.io/SiteInundacaoRN/",
+      "image": "../site/imagens/plataforma-inundacao-rio-negrinho.png",
+      "alt": "Figura de visualização de cotas de inundação para Rio Negrinho",
+      "description": "Painel dedicado a cotas de inundação e leitura técnica do município."
+    },
+    {
+      "system": "seg365",
+      "title": "SEG365 - Segurança do Trabalho",
+      "url": "https://segurancav1-257334282806.europe-west1.run.app",
+      "image": "../site/imagens/plataforma-seg365.png",
+      "alt": "Logo SEG365 Segurança do Trabalho",
+      "description": "Ambiente específico para acompanhamento de segurança do trabalho."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "company": "Valor Florestal",
+  "links": [
+    {
+      "system": "combate-incendio-florestal",
+      "title": "Combate a Incêndio Florestal",
+      "url": "https://marcosjantsch.github.io/CombateIncendio/",
+      "image": "../site/imagens/plataforma-combate-incendio.webp",
+      "alt": "Figura de combate a incêndio florestal para Valor Florestal",
+      "description": "Painel de monitoramento, focos de calor e apoio à resposta operacional."
+    },
+    {
+      "system": "analise-climatica",
+      "title": "Análise Climática",
+      "url": "https://avantclimav23-675455728201.southamerica-east1.run.app",
+      "image": "../site/imagens/plataforma-clima.webp",
+      "alt": "Figura de análise climática para Valor Florestal",
+      "description": "Organização de dados climáticos para acompanhamento técnico e planejamento."
+    },
+    {
+      "system": "analise-imagens-satelite",
+      "title": "Análise de Imagens de Satélite",
+      "url": "https://avantmap-675455728201.southamerica-east1.run.app",
+      "image": "../site/imagens/plataforma-satelite.webp",
+      "alt": "Figura de análise de imagens para Valor Florestal",
+      "description": "Camadas geoespaciais e leitura visual para fazendas, talhões e apoio de campo."
+    },
+    {
+      "system": "dados-fundiarios",
+      "title": "Dados Fundiários",
+      "url": "https://avantfundiario-675455728201.southamerica-east1.run.app/",
+      "image": "../site/imagens/plataforma-fundiario.webp",
+      "alt": "Figura de dados fundiários para Valor Florestal",
+      "description": "Consulta territorial, organização cadastral e apoio à documentação."
+    }
+  ]
+}

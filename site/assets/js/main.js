@@ -1,24 +1,69 @@
+function detectRootPrefix() {
+  const path = window.location.pathname.replace(/\\/g, "/");
+  return /\/(?:site|avant|valor|braspine)(?:\/|$)/.test(path) ? "../" : "";
+}
+
+const rootPrefix = document.body.dataset.rootPrefix || detectRootPrefix();
+
 const siteConfig = {
-  company: "Avant",
+  company: "Avant Assessoria Florestal LTDA",
   brand: "Avant",
   tagline: "Inteligência artificial e precisão operacional para decisões mais claras no campo.",
   email: "avant.marcosj@gmail.com",
-  phoneDisplay: "47 988110609",
+  phoneDisplay: "47 98811-0609",
   phoneIntl: "5547988110609",
   city: "Brasil",
-  logo: "imagens/avant-logo.png"
+  logo: `${rootPrefix}avant/imagens/avant-logo.png`
+};
+
+const routes = {
+  home: `${rootPrefix}index.html`,
+  servicos: `${rootPrefix}site/servicos.html`,
+  ia: `${rootPrefix}site/inteligencia-artificial.html`,
+  geotecnologias: `${rootPrefix}site/geotecnologias.html`,
+  manejo: `${rootPrefix}site/manejo-florestal.html`,
+  clientes: `${rootPrefix}site/clientes.html`,
+  contato: `${rootPrefix}site/contato.html`,
+  plataforma: `${rootPrefix}site/plataforma.html`,
+  avant: `${rootPrefix}avant/index.html`,
+  valor: `${rootPrefix}valor/index.html`,
+  braspine: `${rootPrefix}braspine/index.html`
 };
 
 const navItems = [
-  { id: "home", label: "Home", href: "index.html" },
-  { id: "servicos", label: "Serviços", href: "servicos.html" },
-  { id: "ia", label: "IA", href: "inteligencia-artificial.html" },
-  { id: "geotecnologias", label: "Geotecnologia", href: "geotecnologias.html" },
-  { id: "manejo", label: "Manejo", href: "manejo-florestal.html" },
-  { id: "clientes", label: "Parceiros", href: "clientes.html" },
-  { id: "contato", label: "Contato", href: "contato.html" },
-  { id: "plataforma", label: "Plataforma", href: "plataforma.html", isSelector: true }
+  { id: "home", label: "Home", href: routes.home },
+  { id: "servicos", label: "Serviços", href: routes.servicos },
+  { id: "ia", label: "IA", href: routes.ia },
+  { id: "geotecnologias", label: "Geotecnologias", href: routes.geotecnologias },
+  { id: "manejo", label: "Manejo", href: routes.manejo },
+  { id: "clientes", label: "Parceiros", href: routes.clientes },
+  { id: "contato", label: "Contato", href: routes.contato },
+  { id: "plataforma", label: "Plataforma", href: routes.plataforma, isSelector: true }
 ];
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function applyTranslationGuard() {
+  document.documentElement.lang = "pt-BR";
+  document.documentElement.setAttribute("translate", "no");
+  document.documentElement.classList.add("notranslate");
+  document.body.setAttribute("translate", "no");
+  document.body.classList.add("notranslate");
+
+  if (!document.querySelector('meta[name="google"][content="notranslate"]')) {
+    const meta = document.createElement("meta");
+    meta.name = "google";
+    meta.content = "notranslate";
+    document.head.appendChild(meta);
+  }
+}
 
 function buildHeader() {
   const active = document.body.dataset.page || "";
@@ -48,9 +93,9 @@ function buildHeader() {
   headerTarget.innerHTML = `
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="brand brand--header" href="index.html" aria-label="Ir para a página inicial da Avant">
+        <a class="brand brand--header" href="${routes.home}" aria-label="Ir para a página inicial da Avant">
           <span class="brand__mark brand__mark--header">
-            <img src="${siteConfig.logo}" alt="Símbolo da Avant" />
+            <img src="${siteConfig.logo}" alt="Logo da Avant" />
           </span>
           <span class="brand__text brand__text--header">
             <strong>${siteConfig.brand}</strong>
@@ -71,20 +116,25 @@ function buildHeader() {
       <div class="platform-modal" id="platform-selector-modal" data-platform-modal hidden>
         <div class="platform-modal__backdrop" data-platform-modal-close></div>
         <div class="platform-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="platform-selector-title">
-          <button type="button" class="platform-modal__close" aria-label="Fechar seleção de plataforma" data-platform-modal-close>×</button>
+          <button type="button" class="platform-modal__close" aria-label="Fechar seleção de plataforma" data-platform-modal-close>&times;</button>
           <span class="eyebrow">Plataforma</span>
           <h2 id="platform-selector-title">Selecione o ambiente institucional</h2>
-          <p>Escolha qual ambiente institucional deseja acessar para visualizar os links e módulos disponíveis.</p>
+          <p>Escolha a empresa para acessar os sistemas, dashboards e módulos configurados para cada operação.</p>
           <div class="platform-modal__options">
-            <a class="platform-modal__card" href="acessos-avant.html">
+            <a class="platform-modal__card" href="${routes.avant}">
               <span class="platform-modal__label">Avant</span>
               <strong>Acessos institucionais da Avant</strong>
-              <span>Links oficiais, plataformas e ferramentas institucionais da Avant.</span>
+              <span>Plataformas corporativas, painéis técnicos e ferramentas institucionais.</span>
             </a>
-            <a class="platform-modal__card" href="acessos-valor-florestal.html">
+            <a class="platform-modal__card" href="${routes.valor}">
               <span class="platform-modal__label">Valor Florestal</span>
               <strong>Acessos institucionais da Valor Florestal</strong>
-              <span>Ambientes dedicados, módulos e sistemas ligados à Valor Florestal.</span>
+              <span>Ambientes dedicados, painéis operacionais e módulos vinculados à Valor Florestal.</span>
+            </a>
+            <a class="platform-modal__card" href="${routes.braspine}">
+              <span class="platform-modal__label">Braspine</span>
+              <strong>Acessos institucionais da Braspine</strong>
+              <span>Página institucional da Braspine com os mesmos elementos visuais e estrutura operacional.</span>
             </a>
           </div>
         </div>
@@ -97,27 +147,22 @@ function buildFooter() {
   const footerTarget = document.getElementById("site-footer");
   if (!footerTarget) return;
 
-  const companyLine =
-    siteConfig.company && siteConfig.company !== siteConfig.brand
-      ? `<span>${siteConfig.company}</span>`
-      : "";
-
   footerTarget.innerHTML = `
     <footer class="site-footer">
       <div class="container site-footer__top">
         <div class="site-footer__brand">
-          <a class="brand" href="index.html">
+          <a class="brand" href="${routes.home}">
             <span class="brand__mark">
-              <img src="${siteConfig.logo}" alt="Símbolo da Avant" />
+              <img src="${siteConfig.logo}" alt="Logo da Avant" />
             </span>
             <span class="brand__text">
               <strong>${siteConfig.brand}</strong>
-              ${companyLine}
+              <span>${siteConfig.company}</span>
             </span>
           </a>
           <p>${siteConfig.tagline}</p>
           <div class="tag-cloud">
-            <span class="tag">inteligência artificial florestal</span>
+            <span class="tag">inteligencia artificial florestal</span>
             <span class="tag">geotecnologia</span>
             <span class="tag">sensoriamento remoto</span>
             <span class="tag">manejo florestal</span>
@@ -130,7 +175,7 @@ function buildFooter() {
             ${navItems
               .map((item) =>
                 item.isSelector
-                  ? `<li><a href="plataforma.html">${item.label}</a></li>`
+                  ? `<li><a href="${routes.plataforma}">${item.label}</a></li>`
                   : `<li><a href="${item.href}">${item.label}</a></li>`
               )
               .join("")}
@@ -143,7 +188,7 @@ function buildFooter() {
             <li><a href="mailto:${siteConfig.email}">${siteConfig.email}</a></li>
             <li><a href="https://wa.me/${siteConfig.phoneIntl}" target="_blank" rel="noreferrer">${siteConfig.phoneDisplay}</a></li>
             <li>${siteConfig.city}</li>
-            <li><a href="contato.html">Solicitar contato</a></li>
+            <li><a href="${routes.contato}">Solicitar contato</a></li>
           </ul>
         </div>
       </div>
@@ -157,24 +202,16 @@ function buildFooter() {
 
 function setupMenu() {
   const toggle = document.querySelector("[data-menu-toggle]");
-  const body = document.body;
   if (!toggle) return;
 
   toggle.addEventListener("click", () => {
-    const isOpen = body.classList.toggle("menu-open");
+    const isOpen = document.body.classList.toggle("menu-open");
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  document.querySelectorAll(".site-nav a").forEach((link) => {
-    link.addEventListener("click", () => {
-      body.classList.remove("menu-open");
-      toggle.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  document.querySelectorAll(".site-nav button").forEach((button) => {
-    button.addEventListener("click", () => {
-      body.classList.remove("menu-open");
+  document.querySelectorAll(".site-nav a, .site-nav button").forEach((node) => {
+    node.addEventListener("click", () => {
+      document.body.classList.remove("menu-open");
       toggle.setAttribute("aria-expanded", "false");
     });
   });
@@ -193,18 +230,6 @@ function setupContactForm() {
     }
     form.reset();
   });
-}
-
-function setupPlatformToggle() {
-  const toggle = document.querySelector("[data-platform-toggle]");
-  const panel = document.querySelector("[data-platform-panel]");
-  if (toggle && panel) {
-    toggle.addEventListener("click", () => {
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!expanded));
-      panel.hidden = expanded;
-    });
-  }
 }
 
 function setupPlatformModal() {
@@ -253,15 +278,67 @@ function hydrateDynamicFields() {
   });
 
   const yearNode = document.querySelector("[data-current-year]");
-  if (yearNode) yearNode.textContent = new Date().getFullYear();
+  if (yearNode) {
+    yearNode.textContent = new Date().getFullYear();
+  }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+async function loadPlatformConfig(path) {
+  const response = await fetch(path, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Falha ao carregar ${path}`);
+  }
+
+  return response.json();
+}
+
+function renderPlatformCards(container, config) {
+  const items = Array.isArray(config.links) ? config.links : [];
+  if (items.length === 0) {
+      container.innerHTML =
+        '<article class="card"><h3>Nenhum link configurado</h3><p>Edite o arquivo config.json desta empresa para adicionar os ambientes externos.</p></article>';
+    return;
+  }
+
+  container.innerHTML = items
+    .map(
+      (item) => `
+        <a class="platform-tool-card" href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">
+          <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt || item.title)}" />
+          <div class="platform-tool-card__body">
+            <h3>${escapeHtml(item.title)}</h3>
+            ${item.description ? `<p>${escapeHtml(item.description)}</p>` : ""}
+          </div>
+        </a>
+      `
+    )
+    .join("");
+}
+
+async function renderPlatformLinks() {
+  const containers = document.querySelectorAll("[data-platform-config]");
+  if (containers.length === 0) return;
+
+  await Promise.all(
+    [...containers].map(async (container) => {
+      try {
+        const config = await loadPlatformConfig(container.dataset.platformConfig);
+        renderPlatformCards(container, config);
+      } catch (error) {
+        container.innerHTML =
+          '<article class="card"><h3>Links indisponiveis</h3><p>Nao foi possivel carregar a configuracao desta empresa.</p></article>';
+      }
+    })
+  );
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  applyTranslationGuard();
   buildHeader();
   buildFooter();
   hydrateDynamicFields();
   setupMenu();
   setupContactForm();
-  setupPlatformToggle();
   setupPlatformModal();
+  await renderPlatformLinks();
 });

@@ -978,7 +978,7 @@ textarea {
 
 .platform-selector-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1rem;
 }
 
@@ -1018,6 +1018,10 @@ textarea {
 
 .platform-selector-card--valor {
   margin-top: -1.5rem;
+}
+
+.platform-selector-card--braspine {
+  margin-top: 1.25rem;
 }
 
 .platform-brand-grid {
@@ -1123,6 +1127,12 @@ button.platform-brand-card--institutional[aria-expanded="true"] {
   margin: 0;
   color: #17332b;
   font-size: 1.08rem;
+}
+
+.platform-tool-card__body p {
+  margin: 0.55rem 0 0;
+  color: #4f695f;
+  font-size: 0.94rem;
 }
 
 .segment-grid,
@@ -1629,7 +1639,8 @@ button.platform-brand-card--institutional[aria-expanded="true"] {
   }
 
   .platform-selector-card--avant,
-  .platform-selector-card--valor {
+  .platform-selector-card--valor,
+  .platform-selector-card--braspine {
     margin-top: 0;
   }
 }
