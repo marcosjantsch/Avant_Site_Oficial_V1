@@ -4,7 +4,7 @@
     {
       "system": "combate-incendio-florestal",
       "title": "Combate a Incêndio Florestal",
-      "url": "https://marcosjantsch.github.io/IncendioPlataformaAvant/",
+      "url": "https://gfpincendiov2-675455728201.southamerica-east1.run.app/",
       "image": "../site/imagens/plataforma-combate-incendio.webp",
       "alt": "Figura de combate a incêndio florestal na plataforma da Avant",
       "description": "Painel de monitoramento e resposta para ocorrências de incêndio florestal."
@@ -36,7 +36,7 @@
     {
       "system": "cotas-inundacao-rio-negrinho",
       "title": "Cotas de Inundação - Rio Negrinho",
-      "url": "https://marcosjantsch.github.io/SiteInundacaoRN/",
+      "url": "https://marcosjantsch.github.io/Avant_Site_Inundacao_RN/",
       "image": "../site/imagens/plataforma-inundacao-rio-negrinho.png",
       "alt": "Figura de visualização de cotas de inundação para Rio Negrinho",
       "description": "Painel dedicado a cotas de inundação e leitura técnica do município."
